@@ -18,28 +18,27 @@ $(document).ready(function(e) {
       ])(data);
 
       // Crear estructura de compromisos
-      var compromisosArray = _.map(compromisosTitlesArray, function(compromisoTitle) {
+      var compromisosArray = _.map(compromisosTitlesArray, function(compromisoTitulo, index) {
         return {
-          titulo: compromisoTitle,
+          titulo: compromisoTitulo,
+          numero: index + 1,
           primerAvance: [
-            {titulo: 'Hito1', status: 'Sup'},
-            {titulo: 'Hito2', status: 'Sup'}
+            {titulo: 'Hito1', entidad: 'RED', descripcion: 'alksdjflkasdjflkasdjflkasjdfs', status: 'completado'},
+            {titulo: 'Hito2', entidad: 'RED', descripcion: 'alksdjflkasdjflkasdjflkasjdfs', status: 'incompleto'}
           ],
           segundoAvance: [
-            {titulo: 'Hito3', status: 'Sup'},
+            {titulo: 'Hito3', entidad: 'RED', descripcion: 'alksdjflkasdjflkasdjflkasjdfs', status: 'tarde'},
           ],
           tercerAvance: [
-            {titulo: 'Hito4', status: 'Sup'},
+            {titulo: 'Hito4', entidad: 'RED', descripcion: 'alksdjflkasdjflkasdjflkasjdfs', status: 'tarde'},
+            {titulo: 'Hito5', entidad: 'RED', descripcion: 'alksdjflkasdjflkasdjflkasjdfs', status: 'completado'}
           ]
         };
       });
 
       var compiled = _.template(`<div class="row list-key">
             <div class="col-md-1 id">
-                <h4>1</h4>
-                <div class="plus">
-                    <a href="#" title="responsable-1">+</a>
-                </div>
+                <h4><%= compromiso.numero %></h4>
             </div>
             <div class="col-md-2 ct">
                 <p><%= compromiso.titulo %></p>
@@ -47,211 +46,55 @@ $(document).ready(function(e) {
 
             <div class="col-md-3 ct">
                 <ul class="cumplimiento">
-                    <li><a href="#" class="objetivo completado"></a>
-                        <ul>
-                            <li><div class="detalle">
-                                <p>Habilitar los mecanismos técnicos para la integración de tramites y servicios</p>
-                                <h4>5</h4>
-                                <p class="row"><span class="col-md-6">Tramites y servicios en gob.mx por dependencias y entidades</span>
-                                <span class="col-md-6"> <a href="#" class="medios">Medios de verificación</a></span>
-                                </p>
-                                <p>Responsable: <a href="#">Unidad de Gobierno Digital</a></p>
-                            </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="objetivo completado"></a>
-                        <ul>
-                            <li><div class="detalle">
-                                <p>Habilitar los mecanismos técnicos para la integración de tramites y servicios</p>
-                                <h4>5</h4>
-                                <p class="row"><span class="col-md-6">Tramites y servicios en gob.mx por dependencias y entidades</span>
-                                <span class="col-md-6"> <a href="#" class="medios">Medios de verificación</a></span>
-                                </p>
-                                <p>Responsable: <a href="#">Unidad de Gobierno Digital</a></p>
-                            </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="objetivo proceso"></a>
-                        <ul>
-                            <li><div class="detalle">
-                                <p>Habilitar los mecanismos técnicos para la integración de tramites y servicios</p>
-                                <h4>5</h4>
-                                <p class="row"><span class="col-md-6">Tramites y servicios en gob.mx por dependencias y entidades</span>
-                                <span class="col-md-6"> <a href="#" class="medios">Medios de verificación</a></span>
-                                </p>
-                                <p>Responsable: <a href="#">Unidad de Gobierno Digital</a></p>
-                            </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="objetivo tarde"></a>
-                        <ul>
-                            <li><div class="detalle">
-                                <p>Habilitar los mecanismos técnicos para la integración de tramites y servicios</p>
-                                <h4>5</h4>
-                                <p class="row"><span class="col-md-6">Tramites y servicios en gob.mx por dependencias y entidades</span>
-                                <span class="col-md-6"> <a href="#" class="medios">Medios de verificación</a></span>
-                                </p>
-                                <p>Responsable: <a href="#">Unidad de Gobierno Digital</a></p>
-                            </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="objetivo tarde"></a>
-                        <ul>
-                            <li><div class="detalle">
-                                <p>Habilitar los mecanismos técnicos para la integración de tramites y servicios</p>
-                                <h4>5</h4>
-                                <p class="row"><span class="col-md-6">Tramites y servicios en gob.mx por dependencias y entidades</span>
-                                <span class="col-md-6"> <a href="#" class="medios">Medios de verificación</a></span>
-                                </p>
-                                <p>Responsable: <a href="#">Unidad de Gobierno Digital</a></p>
-                            </div>
-                            </li>
-                        </ul>
-                    </li>
+                    <% _.forEach(compromiso.primerAvance, function(hito) { %>
+                        <li>
+                            <a href="#" class="objetivo <%= hito.status %>"></a>
+                            <ul>
+                                <li>
+                                    <div class="detalle">
+                                        <p><%= hito.descripcion %></p>
+                                        <p>Responsable: <a href="#"><%= hito.entidad %></a></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    <% }); %>
                 </ul>
             </div>
 
             <div class="col-md-3 ct">
                 <ul class="cumplimiento">
-                    <li><a href="#" class="objetivo completado"></a>
-                        <ul>
-                            <li><div class="detalle">
-                                <p>Habilitar los mecanismos técnicos para la integración de tramites y servicios</p>
-                                <h4>5</h4>
-                                <p class="row"><span class="col-md-6">Tramites y servicios en gob.mx por dependencias y entidades</span>
-                                <span class="col-md-6"> <a href="#" class="medios">Medios de verificación</a></span>
-                                </p>
-                                <p>Responsable: <a href="#">Unidad de Gobierno Digital</a></p>
-                            </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="objetivo proceso"></a>
-                        <ul>
-                            <li><div class="detalle">
-                                <p>Habilitar los mecanismos técnicos para la integración de tramites y servicios</p>
-                                <h4>5</h4>
-                                <p class="row"><span class="col-md-6">Tramites y servicios en gob.mx por dependencias y entidades</span>
-                                <span class="col-md-6"> <a href="#" class="medios">Medios de verificación</a></span>
-                                </p>
-                                <p>Responsable: <a href="#">Unidad de Gobierno Digital</a></p>
-                            </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="objetivo proceso"></a>
-                        <ul>
-                            <li><div class="detalle">
-                                <p>Habilitar los mecanismos técnicos para la integración de tramites y servicios</p>
-                                <h4>5</h4>
-                                <p class="row"><span class="col-md-6">Tramites y servicios en gob.mx por dependencias y entidades</span>
-                                <span class="col-md-6"> <a href="#" class="medios">Medios de verificación</a></span>
-                                </p>
-                                <p>Responsable: <a href="#">Unidad de Gobierno Digital</a></p>
-                            </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="objetivo proceso"></a>
-                        <ul>
-                            <li><div class="detalle">
-                                <p>Habilitar los mecanismos técnicos para la integración de tramites y servicios</p>
-                                <h4>5</h4>
-                                <p class="row"><span class="col-md-6">Tramites y servicios en gob.mx por dependencias y entidades</span>
-                                <span class="col-md-6"> <a href="#" class="medios">Medios de verificación</a></span>
-                                </p>
-                                <p>Responsable: <a href="#">Unidad de Gobierno Digital</a></p>
-                            </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="objetivo tarde"></a>
-                        <ul>
-                            <li><div class="detalle">
-                                <p>Habilitar los mecanismos técnicos para la integración de tramites y servicios</p>
-                                <h4>5</h4>
-                                <p class="row"><span class="col-md-6">Tramites y servicios en gob.mx por dependencias y entidades</span>
-                                <span class="col-md-6"> <a href="#" class="medios">Medios de verificación</a></span>
-                                </p>
-                                <p>Responsable: <a href="#">Unidad de Gobierno Digital</a></p>
-                            </div>
-                            </li>
-                        </ul>
-                    </li>
+                    <% _.forEach(compromiso.segundoAvance, function(hito) { %>
+                        <li>
+                            <a href="#" class="objetivo <%= hito.status %>"></a>
+                            <ul>
+                                <li>
+                                    <div class="detalle">
+                                        <p><%= hito.descripcion %></p>
+                                        <p>Responsable: <a href="#"><%= hito.entidad %></a></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    <% }); %>
                 </ul>
             </div>
 
             <div class="col-md-3 ct tercer">
                 <ul class="cumplimiento">
-                    <li><a href="#" class="objetivo tarde"></a>
-                        <ul>
-                            <li><div class="detalle">
-                                <p>Habilitar los mecanismos técnicos para la integración de tramites y servicios</p>
-                                <h4>5</h4>
-                                <p class="row"><span class="col-md-6">Tramites y servicios en gob.mx por dependencias y entidades</span>
-                                <span class="col-md-6"> <a href="#" class="medios">Medios de verificación</a></span>
-                                </p>
-                                <p>Responsable: <a href="#">Unidad de Gobierno Digital</a></p>
-                            </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="objetivo tarde"></a>
-                        <ul>
-                            <li><div class="detalle">
-                                <p>Habilitar los mecanismos técnicos para la integración de tramites y servicios</p>
-                                <h4>5</h4>
-                                <p class="row"><span class="col-md-6">Tramites y servicios en gob.mx por dependencias y entidades</span>
-                                <span class="col-md-6"> <a href="#" class="medios">Medios de verificación</a></span>
-                                </p>
-                                <p>Responsable: <a href="#">Unidad de Gobierno Digital</a></p>
-                            </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="objetivo tarde"></a>
-                        <ul>
-                            <li><div class="detalle">
-                                <p>Habilitar los mecanismos técnicos para la integración de tramites y servicios</p>
-                                <h4>5</h4>
-                                <p class="row"><span class="col-md-6">Tramites y servicios en gob.mx por dependencias y entidades</span>
-                                <span class="col-md-6"> <a href="#" class="medios">Medios de verificación</a></span>
-                                </p>
-                                <p>Responsable: <a href="#">Unidad de Gobierno Digital</a></p>
-                            </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="objetivo tarde"></a>
-                        <ul>
-                            <li><div class="detalle">
-                                <p>Habilitar los mecanismos técnicos para la integración de tramites y servicios</p>
-                                <h4>5</h4>
-                                <p class="row"><span class="col-md-6">Tramites y servicios en gob.mx por dependencias y entidades</span>
-                                <span class="col-md-6"> <a href="#" class="medios">Medios de verificación</a></span>
-                                </p>
-                                <p>Responsable: <a href="#">Unidad de Gobierno Digital</a></p>
-                            </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="objetivo tarde"></a>
-                        <ul>
-                            <li><div class="detalle">
-                                <p>Habilitar los mecanismos técnicos para la integración de tramites y servicios</p>
-                                <h4>5</h4>
-                                <p class="row"><span class="col-md-6">Tramites y servicios en gob.mx por dependencias y entidades</span>
-                                <span class="col-md-6"> <a href="#" class="medios">Medios de verificación</a></span>
-                                </p>
-                                <p>Responsable: <a href="#">Unidad de Gobierno Digital</a></p>
-                            </div>
-                            </li>
-                        </ul>
-                    </li>                   
+                    <% _.forEach(compromiso.tercerAvance, function(hito) { %>
+                        <li>
+                            <a href="#" class="objetivo <%= hito.status %>"></a>
+                            <ul>
+                                <li>
+                                    <div class="detalle">
+                                        <p><%= hito.descripcion %></p>
+                                        <p>Responsable: <a href="#"><%= hito.entidad %></a></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    <% }); %>
                 </ul>
             </div>
         </div>`);
