@@ -811,6 +811,11 @@ input:focus, select:focus, textarea:focus {
   .completado:hover {
     background: #089364; }
 
+.completo {
+  background: #00a76f; }
+  .completado:hover {
+    background: #089364; }
+
 .proceso {
   background: #ffe460; }
   .proceso:hover {

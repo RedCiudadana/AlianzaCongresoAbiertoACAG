@@ -10,31 +10,50 @@ $(document).ready(function(e) {
   Tabletop.init({
     key: 'https://docs.google.com/spreadsheets/d/1MfYB_s34mxs4YpROy1LihnS4_eZj7uH6_3KiBOCVBwQ/pubhtml',
     wanted: ['tablero'],
-    callback: function(data, tabletop) {
+    callback: function(rawData, tabletop) {
 
       var compromisosTitlesArray = _.flow([
         function(data) { return _.map(data, function(e) { return e.compromisos }); },
         _.uniq
-      ])(data);
+      ])(rawData);
+
+      var mapFunction = function(data) { return _.map(data, function(e) {
+        return {
+          entidad: e.entidad,
+          descripcion: e.hitos,
+          status: e.estado
+        };
+      }); };
 
       // Crear estructura de compromisos
       var compromisosArray = _.map(compromisosTitlesArray, function(compromisoTitulo, index) {
         return {
           titulo: compromisoTitulo,
           numero: index + 1,
-          primerAvance: [
-            {titulo: 'Hito1', entidad: 'RED', descripcion: 'alksdjflkasdjflkasdjflkasjdfs', status: 'completado'},
-            {titulo: 'Hito2', entidad: 'RED', descripcion: 'alksdjflkasdjflkasdjflkasjdfs', status: 'incompleto'}
-          ],
-          segundoAvance: [
-            {titulo: 'Hito3', entidad: 'RED', descripcion: 'alksdjflkasdjflkasdjflkasjdfs', status: 'tarde'},
-          ],
-          tercerAvance: [
-            {titulo: 'Hito4', entidad: 'RED', descripcion: 'alksdjflkasdjflkasdjflkasjdfs', status: 'tarde'},
-            {titulo: 'Hito5', entidad: 'RED', descripcion: 'alksdjflkasdjflkasdjflkasjdfs', status: 'completado'}
-          ]
+          primerAvance: _.flow([
+            function(data) { return _.filter(data, function(e) {
+              return e.compromisos === compromisoTitulo && e.fechaFin >= '2016-01-01' && e.fechaFin < '2017-01-01'
+            }); },
+            mapFunction
+          ])(rawData),
+
+          segundoAvance: _.flow([
+            function(data) { return _.filter(data, function(e) {
+              return e.compromisos === compromisoTitulo && e.fechaFin >= '2017-01-01' && e.fechaFin < '2018-01-01'
+            }); },
+            mapFunction
+          ])(rawData),
+
+          tercerAvance: _.flow([
+            function(data) { return _.filter(data, function(e) {
+              return e.compromisos === compromisoTitulo && e.fechaFin >= '2018-01-01' && e.fechaFin < '2019-01-01'
+            }); },
+            mapFunction
+          ])(rawData)
         };
       });
+
+      console.log(compromisosArray);
 
       var compiled = _.template(`<div class="row list-key">
             <div class="col-md-1 id">
