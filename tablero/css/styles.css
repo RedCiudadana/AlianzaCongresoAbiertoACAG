@@ -3,6 +3,9 @@ Author: Hugo Osorio
 Author URI: http://hugoosorio.com/
 Version: 1.0
 */
+
+
+
 html {
   background: white;
   text-rendering: optimizeLegibility !important;
@@ -19,6 +22,7 @@ body {
   font-size: 1em;
   line-height: 1.4;
   height: 100%; }
+
 
 * {
   -webkit-box-sizing: border-box;
@@ -96,7 +100,7 @@ h5 {
   font-size: 1em;
   font-weight: bold;
   /* font-weight: 500; */
-  color: grey; }
+  color: #EEE; }
 
 h6 {
   /* 13px */
@@ -123,8 +127,9 @@ p, ul, ol, dl, table, form {
 
 /* = LINKS */
 a, a:link {
-  color: #302d2e;
-  font-family: 'Roboto', sans-serif;
+  color: #CCC;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
   text-decoration: none; }
 
 .alt a, .alt a:link {
@@ -979,11 +984,30 @@ a.objetivo {
   margin-top: 66px;
   margin-bottom: 40px; }
 
+
+  p{
+  font-family: 'Lato',sans-serif;
+  font-size:14px;
+}
+b{
+  font-family: 'Lato',sans-serif;
+  font-size:14px;
+  font-weight: bold;
+}
+
 /* = Footer
 --------------------*/
 #footer {
   background: #333 url(../img/colours.png) repeat-x center 115%;
-  text-align: center;
+  color:#CCC;
+  border-top-color:rgba(0, 0, 0, 0.2);
+  border-top-style: solid;
+  border-top-width: 5px;
+  line-height: 21px;
+  text-size-adjust:100%;
+  text-align: left;
+  position: relative;
+  border-top: 5px solid rgba(0,0,0,0.2);
   padding-top: 20px;
   padding-bottom: 60px; }
   #footer ul.logos {
@@ -999,6 +1023,265 @@ a.objetivo {
         #footer ul.logos li span span {
           display: table-cell;
           vertical-align: middle; }
+          #footer .footer-widgets-wrap {
+            position: relative;
+            padding: 40px 0; }
+.footer-widgets-wrap .col_one_third{
+  margin-bottom: 0;
+}
+
+.btn-success {
+    color: #ffffff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.btn-success:hover {
+    color: #ffffff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+
+#copyrights{
+  background-color: rgba(0,0,0,0.2);
+  color: rgba(255,255,255,0.25);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+  padding: 40px 0;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+#copyrights .container{
+  width: 1170px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+}
+
+.btn{
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+}
+
+.input-group-btn {
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
+    width: 40px;
+    vertical-align: middle;
+    display:table-cell;
+    box-sizing: border-box;
+}
+
+.input-group-btn > .btn{
+  position: relative;
+}
+
+.input-group-btn:last-child > .btn{
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  z-index: 2;
+  margin-left: -1px;
+}
+
+.input-group-addon{
+  color: #999;
+  background-color: rgba(0,0,0,0.35);
+  border-color: rgba(0,0,0,0.25);
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.25);
+  border-radius: 4px;
+  width: 10%;
+  white-space: nowrap;
+  vertical-align: middle;
+  display: table-cell;
+  box-sizing: border-box;
+}
+
+.form-control{
+  font-family: 'Lato', sans-serif;
+  color: #999;
+  background-color: rgba(0,0,0,0.2);
+  border-color: rgba(0,0,0,0.25);
+  display: table-cell;
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 200px;
+  margin-bottom: 0;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border: 1px solid #cccccc;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border-color-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.form-control:focus{
+  background-color: rgba(0,0,0,0.3);
+border-color: rgba(0,0,0,0.25) !important;
+
+}
+
+.divcenter {
+    position: relative !important;
+    float: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+
+.just-bold{
+  font-weight: bold;
+}
+
+.subscribe-widget h5 {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.si-twitter:hover, .si-colored.si-twitter {
+    background-color: #00ACEE !important;
+}
+
+.social-icon i:last-child {
+    color: #FFF !important;
+}
+
+@font-face {
+  font-family: 'font-icons';
+  src:url('fonts/font-icons.eot');
+  src:url('fonts/font-icons.eot') format('embedded-opentype'),
+    url('fonts/font-icons.woff') format('woff'),
+    url('fonts/font-icons.ttf') format('truetype'),
+    url('fonts/font-icons.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"],
+[class^="icon-line-"], [class*=" icon-line-"],
+[class^="icon-line2-"], [class*=" icon-line2-"],
+.side-header #primary-menu ul > li.sub-menu > a:after {
+  display: inline-block;
+  font-family: 'font-icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a.development{
+  color: #1ABC9C;
+}
+a.development:hover{
+  color: #EEE;
+}
+
+.social-icon i {
+    display: block;
+    position: relative;
+}
+.nobottommargin {
+    margin-bottom: 0 !important;
+}
+
+.social-icon {
+    display: block;
+    float: left;
+    margin: 4px 11px 7px 0;
+    text-align: center !important;
+    font-size: 28px;
+    color: #FFF;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    cursor: pointer;
+    font-style: normal;
+}
+
+.social-icon {
+    margin: 0 5px 5px 0;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 38px !important;
+    color: #555;
+    text-shadow: none;
+    border: 1px solid #AAA;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.si-colored.si-facebook {
+    background-color: #3B5998 !important;
+}
+
+.si-dark {
+    background-color: rgba(0,0,0,0.2);
+    color: #DDD !important;
+    border-color: transparent;
+}
+
+body:not(.device-touch) .i-rounded, body:not(.device-touch) .i-plain, body:not(.device-touch) .i-circled, body:not(.device-touch) .i-bordered, body:not(.device-touch) .social-icon {
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+.col_last {
+    margin-right: 0 !important;
+    clear: right;
+}
+
+.col_one_third{
+  width: 30.63%; 
+  display: block;
+  position: relative;
+  margin-right: 4%;
+  margin-bottom: 50px;
+  float: left;
+  margin-bottom: 0;
+}
+
+.widget:first-child { 
+  margin-top: 0; 
+}
+
+.widget{
+  position: relative;
+}
+
 
 /* logos --------------------*/
 .logo {
